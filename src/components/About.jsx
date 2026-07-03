@@ -31,7 +31,7 @@ export default function About() {
 
           <div className="about-actions">
             <a
-              href="/CV - Lorenzo Muñoz.pdf"
+              href={`${import.meta.env.BASE_URL}CV - Lorenzo Muñoz.pdf`}
               download
               className="btn btn-outline"
             >
