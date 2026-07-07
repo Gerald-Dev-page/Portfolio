@@ -9,7 +9,7 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Activa la notificación en la interfaz
+    // Activa la notificación (overlay) en la interfaz
     setShowNotification(true);
 
     // Oculta la notificación después de 8 segundos
@@ -49,6 +49,8 @@ export default function Contact() {
 
         {/* Columna Derecha: Formulario */}
         <form className="contact-form-ui" onSubmit={handleSubmit}>
+          
+          {/* Los inputs siguen igual */}
           <div className="form-group-ui">
             <label htmlFor="name">Nombre</label>
             <input type="text" id="name" name="name" placeholder="Nombre completo" required />
@@ -68,10 +70,21 @@ export default function Contact() {
             ENVIAR
           </button>
 
-          {/* Renderizado condicional del mensaje de notificación */}
+          {/* OVERLAY DE NOTIFICACIÓN (Cubre todo el formulario) */}
           {showNotification && (
-            <div className="form-notification-msg">
-              El formulario se encuentra inactivo. Por favor, envíeme un correo directamente a lorenzo.geraldo.munoz@gmail.com.
+            <div className="form-overlay-msg">
+              <div className="overlay-content">
+                <p>El sistema de mensajería automatizada se encuentra en mantenimiento.</p>
+                <br />
+                <p>Para garantizar una respuesta formal, le agradeceré canalizar su consulta escribiendo a{' '}
+                  <a 
+                    href="mailto:lorenzo.geraldo.munoz@gmail.com" 
+                    className="overlay-link"
+                  >
+                    lorenzo.geraldo.munoz@gmail.com
+                  </a>.
+                </p>
+              </div>
             </div>
           )}
         </form>

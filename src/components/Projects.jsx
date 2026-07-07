@@ -39,8 +39,8 @@ export default function Projects() {
     {
       id: 5,
       title: "AGUA VITAL",
-      category: "Landing Page / Agencia",
-      desc: "Plataforma web de gestión para distribución. Control de información y presentación corporativa con una interfaz optimizada para dispositivos móviles.",
+      category: "Landing Page / Integración Data",
+      desc: "Plataforma web institucional que actúa como presentación corporativa y se integra directamente con el sistema Data. Combina una interfaz optimizada con control avanzado para la gestión de distribución.",
       img: "proyectos/Agua-vital.webp",
       link: "https://agua.geralddev.com.ar/"
     }

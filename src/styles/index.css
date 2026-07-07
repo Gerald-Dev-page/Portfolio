@@ -1197,3 +1197,218 @@ a:hover { color: var(--pink-glow); }
     box-sizing: border-box;
   }
 }
+/* =========================================
+   EFECTO PULSO PARA BOTÓN CV
+========================================= */
+.btn-pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Detenemos la animación al hacer hover para que actúe la transición natural del btn-primary */
+.btn-pulse:hover {
+  animation: none;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 8px 30px var(--shadow-purple), 0 0 0 0 rgba(232, 121, 249, 0.4);
+  }
+  70% {
+    box-shadow: 0 8px 30px var(--shadow-purple), 0 0 0 12px rgba(232, 121, 249, 0);
+  }
+  100% {
+    box-shadow: 0 8px 30px var(--shadow-purple), 0 0 0 0 rgba(232, 121, 249, 0);
+  }
+}
+
+/* =========================================
+   PANTALLA DE ENTRADA ÉPICA (UNIVERSAL)
+========================================= */
+.mobile-unlock-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(circle at center, rgba(91, 33, 182, 0.4) 0%, var(--bg-primary) 70%);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.5s var(--ease-out), visibility 1.5s;
+}
+
+.mobile-unlock-overlay.fade-out-epic {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.unlock-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.unlock-btn {
+  background: rgba(12, 16, 28, 0.8);
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  width: 120px; /* Tamaño ideal y legible en monitores de PC */
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 0 30px var(--shadow-purple), inset 0 0 15px var(--shadow-pink);
+  transition: transform var(--transition-fast);
+  overflow: hidden;
+}
+
+.unlock-btn:hover {
+  transform: scale(1.05);
+  border-color: var(--pink-glow);
+}
+
+.unlock-btn:active {
+  transform: scale(0.95);
+}
+
+.unlock-logo {
+  width: 65%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+/* =========================================
+   BOTÓN DE AUDIO FLOTANTE (FIJO EN ESQUINA)
+========================================= */
+.audio-toggle-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: 0 10px 20px var(--shadow-black), 0 0 15px var(--shadow-purple);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+}
+
+.audio-toggle-btn:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-hover);
+  color: var(--pink-glow);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 25px var(--shadow-black), 0 0 20px var(--shadow-pink);
+}
+
+.audio-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Adaptación fluida de tamaños en móviles */
+@media (max-width: 768px) {
+  .unlock-btn {
+    width: 100px;
+    height: 100px;
+  }
+  .audio-toggle-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Animación del contenido tras entrar */
+.app-main-content.scale-in-epic {
+  animation: epic-reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes epic-reveal {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+    filter: blur(15px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+/* =========================================
+   OVERLAY DEL FORMULARIO DE CONTACTO
+========================================= */
+.contact-form-ui {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative; /* Esencial para que el overlay se contenga aquí dentro */
+  overflow: hidden; /* Evita que el overlay o el blur se salgan de los bordes */
+  border-radius: var(--radius-sm);
+  padding-bottom: 5px; /* Un pequeño margen para que el botón respire si el overlay está activo */
+}
+
+.form-overlay-msg {
+  position: absolute;
+  inset: 0; /* Top 0, right 0, bottom 0, left 0 -> Cubre todo el form */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 16, 28, 0.4); /* Fondo ligeramente oscuro */
+  backdrop-filter: blur(10px); /* Efecto de vidrio esmerilado / borroso */
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10;
+  padding: var(--space-4);
+  animation: fadeInEpic 0.4s var(--ease-out);
+}
+
+.overlay-content {
+  background: linear-gradient(145deg, rgba(20, 25, 40, 0.9), rgba(8, 12, 22, 0.95));
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px var(--shadow-purple);
+  animation: scaleUpEpic 0.4s var(--ease-out);
+}
+
+.overlay-link {
+  color: var(--cyan-glow);
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color var(--transition-fast);
+}
+
+.overlay-link:hover {
+  color: var(--pink-glow);
+}
+
+@keyframes fadeInEpic {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUpEpic {
+  from { 
+    opacity: 0; 
+    transform: scale(0.85); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}

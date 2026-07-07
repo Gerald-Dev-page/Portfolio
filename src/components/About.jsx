@@ -30,10 +30,11 @@ export default function About() {
           </p>
 
           <div className="about-actions">
+            {/* Botón de CV destacado con efecto */}
             <a
               href={`${import.meta.env.BASE_URL}CV - Lorenzo Muñoz.pdf`}
               download
-              className="btn btn-outline"
+              className="btn btn-primary btn-pulse"
             >
               Descargar CV
             </a>
